@@ -21,3 +21,15 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+
+#trainig data
+cars_train/*
+archives/*
+*.jpg
+car_devkit.tgz
+cars_train.tar
+
+#windows misc files
+desktop.ini
+
+.ipynb_checkpoints/car_b_finder-checkpoint.ipynb
