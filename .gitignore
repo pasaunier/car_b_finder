@@ -29,6 +29,9 @@ archives/*
 car_devkit.tgz
 cars_train.tar
 
+#docs & stuff
+docs/*
+
 #windows misc files
 desktop.ini
 
