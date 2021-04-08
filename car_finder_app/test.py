@@ -7,6 +7,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.layers import Activation, Dropout, Flatten, Dense
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from classes.model import Model
 
 import os
 
@@ -24,8 +25,9 @@ nameconv = {0: 'AM General', 1: 'Acura', 2: 'Aston', 3: 'Audi',
              43: 'Suzuki', 44: 'Tesla', 45: 'Toyota', 46: 'Volkswagen', 
              47: 'Volvo', 48: 'smart'}
 
-model = tf.keras.models.load_model("overfit.h5")
-model.summary()
+# model = tf.keras.models.load_model("overfit.h5")
+model = Model.getModel("overfit.h5")
+# SINGLETON OK
 
 img = plt.imread("img/audi.jpg", format="jpeg")
 res = cv2.resize(img, dsize=(244, 244), interpolation=cv2.INTER_AREA)
