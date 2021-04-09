@@ -1,17 +1,9 @@
-import pandas as pd
-import numpy as np
-import cv2
-import tensorflow as tf
-import matplotlib.pyplot as plt
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D
-from tensorflow.keras.layers import Activation, Dropout, Flatten, Dense
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from classes.model import Model
+import tensorflow as tf
+import numpy as np
 
-import os
-
-nameconv = {0: 'AM General', 1: 'Acura', 2: 'Aston', 3: 'Audi', 
+class Predicter:
+    __nameconv = {0: 'AM General', 1: 'Acura', 2: 'Aston', 3: 'Audi', 
              4: 'BMW', 5: 'Bentley', 6: 'Bugatti', 7: 'Buick', 
              8: 'Cadillac', 9: 'Chevrolet', 10: 'Chrysler', 
              11: 'Daewoo', 12: 'Dodge', 13: 'Eagle', 14: 'FIAT', 
@@ -25,15 +17,8 @@ nameconv = {0: 'AM General', 1: 'Acura', 2: 'Aston', 3: 'Audi',
              43: 'Suzuki', 44: 'Tesla', 45: 'Toyota', 46: 'Volkswagen', 
              47: 'Volvo', 48: 'smart'}
 
-# model = tf.keras.models.load_model("overfit.h5")
-model = Model.getModel("overfit.h5")
-# SINGLETON OK
-
-img = plt.imread("img/audi.jpg", format="jpeg")
-res = cv2.resize(img, dsize=(244, 244), interpolation=cv2.INTER_AREA)
-res = res.reshape((1, 244, 244, 3))
-
-pred = model.predict(res, batch_size=1, verbose=1)
-indice_pred=np.argmax(pred,axis=1)
-
-print("Result : ", nameconv[indice_pred[0]])
+    @staticmethod
+    def predict(img_processed, batch_size, verbose):
+        pred = (Model.getModel("models/overfit.h5")).predict(img_processed, batch_size=batch_size, verbose=verbose)
+        indice_pred=np.argmax(pred,axis=1)
+        return Predicter.__nameconv[indice_pred[0]]
