@@ -1,1 +1,1 @@
-python interface/app.py
+python app.py
