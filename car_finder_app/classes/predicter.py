@@ -2,7 +2,9 @@ from classes.model import Model
 import tensorflow as tf
 import numpy as np
 
+# Predicter class (predict the car brand)
 class Predicter:
+    # All car brands available
     __nameconv = {0: 'AM General', 1: 'Acura', 2: 'Aston', 3: 'Audi', 
              4: 'BMW', 5: 'Bentley', 6: 'Bugatti', 7: 'Buick', 
              8: 'Cadillac', 9: 'Chevrolet', 10: 'Chrysler', 
@@ -17,8 +19,12 @@ class Predicter:
              43: 'Suzuki', 44: 'Tesla', 45: 'Toyota', 46: 'Volkswagen', 
              47: 'Volvo', 48: 'smart'}
 
+    # Predict the car brand from preprocessed image
     @staticmethod
     def predict(img_processed, batch_size, verbose):
+        # Get the model and predict the car brand of the image
         pred = (Model.getModel("models/overfit.h5")).predict(img_processed, batch_size=batch_size, verbose=verbose)
+        # Get the index of the car brand predicted
         indice_pred=np.argmax(pred,axis=1)
+        # Return the car brand string associated with the index predicted
         return Predicter.__nameconv[indice_pred[0]]
