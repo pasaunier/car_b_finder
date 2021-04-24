@@ -1,6 +1,7 @@
-from classes.model import Model
 import tensorflow as tf
 import numpy as np
+
+from classes.model import Model
 
 # Predicter class (predict the car brand)
 class Predicter:

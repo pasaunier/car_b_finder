@@ -1,19 +1,25 @@
-import os,sys,inspect
+#stl
+import os
+import sys
+import inspect
+
+#image browsing
+from PIL import Image, ImageTk
+
+import tkinter.filedialog as tkFileDialog
+from tkinter import Tk, RIGHT, BOTH, RAISED
+from tkinter.ttk import Frame, Button, Label, Style
+
+from classes.mediator import Mediator
+
 # Set current path to project root
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir) 
 
-from classes.mediator import Mediator
+
 
 # print("Result : ", Mediator.processUserInput("img/audi.jpg"))
-
-from PIL import Image, ImageTk
-import tkinter.filedialog as tkFileDialog
-from tkinter import Tk, RIGHT, BOTH, RAISED
-from tkinter.ttk import Frame, Button, Label, Style
-
-
 
 class PackManager(Frame):
     # Path to the browsed image
