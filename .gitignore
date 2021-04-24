@@ -35,4 +35,10 @@ docs/*
 #windows misc files
 desktop.ini
 
-.ipynb_checkpoints/car_b_finder-checkpoint.ipynb
+#.pyc files !
+*.pyc
+.ipynb_checkpoints/*
+
+model.96-0.89.hdf5
+
+resnet152_weights_tf.h5

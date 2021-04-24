@@ -1,7 +1,15 @@
-from classes.formatter import Formatter
-from classes.predicter import Predicter
+
+# import formatter
+# import predicter
+
+# import formatter as form
+from classes import formatter
+from classes import predicter
+
 
 # Mediator class (only point where the model can be called)
+
+
 class Mediator:
 
     # Process the request for car brand guess
@@ -9,6 +17,6 @@ class Mediator:
     @staticmethod
     def processUserInput(path):
         # Call the image formatter
-        f = Formatter(path, "jpg")
+        f = formatter.Formatter(path, "jpg")
         # Return the model prediction
-        return Predicter.predict(f.getImage(), 1, 1)
+        return predicter.Predicter.predict(f.getImage(), 1, 1)

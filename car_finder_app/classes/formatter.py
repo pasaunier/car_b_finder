@@ -1,5 +1,5 @@
 import cv2
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 # Image formatter class (for preprocessing)
 class Formatter:
@@ -14,7 +14,8 @@ class Formatter:
     # SUPPORT ONLY JPEG AS FORMAT (format="jpg")
     def __init__(self, path, format):
         self.__path = path
-        self.__img = plt.imread(self.__path, format=format)
+        # self.__img = plt.imread(self.__path, format=format)
+        self.__img = cv2.imread(self.__path)
         self.__res = cv2.resize(self.__img, dsize=(244, 244), interpolation=cv2.INTER_AREA)
         self.__res = self.__res.reshape((1, 244, 244, 3))
 
