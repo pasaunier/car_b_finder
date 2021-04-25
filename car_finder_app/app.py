@@ -46,15 +46,15 @@ class PackManager(Frame):
     # Browse button behaviour
     def b_file_browser(e):
         # Width to resize the image for display
-        new_width = 600
+        new_width = 700
         
         # Launch file browser for JPEG files only (.jpg) and copy it in img_path
         path = tkFileDialog.askopenfilename(filetypes=[("JPEG image (.jpg)",'.jpg')])
         e.img_path = path
-        
+
         # Change label state for User Experience (UX)
         e.resultLabel.configure(text="( -_-)旦~ Waiting...")
-        
+            
         # Open the image and resize it for display purposes then display image
         original = Image.open(path)
         multiplier = new_width / original.width
@@ -63,6 +63,9 @@ class PackManager(Frame):
         e.tkimage = ImageTk.PhotoImage(resized)
         e.img_displayer.configure(image=e.tkimage)
         e.img_displayer.image = e.tkimage
+
+        # Resize window to image size
+        e.master.geometry(f"{new_width}x{new_height+40}")
 
         # Enable predict button
         e.predictButton.configure(state="normal")
@@ -120,7 +123,7 @@ def main():
     # Initiate the TKInter User Interface
     root = Tk()
     # Define window size
-    root.geometry("700x700+300+300")
+    root.geometry("700x200+300+300")
     # Display the main frame
     app = PackManager()
     # Launch the app loop
