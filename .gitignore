@@ -42,3 +42,5 @@ desktop.ini
 model.96-0.89.hdf5
 
 resnet152_weights_tf.h5
+
+logs/

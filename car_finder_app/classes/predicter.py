@@ -26,7 +26,7 @@ class Predicter:
     @staticmethod
     def predict(img_processed, batch_size, verbose):
         # Get the model and predict the car brand of the image
-        pred = (Model.getModel(r"models\overfit.h5")).predict(
+        pred = (Model.getModel(r"models\sequential_custom.h5")).predict(
             img_processed, batch_size=batch_size, verbose=verbose)
         # Get the index of the car brand predicted
         indice_pred = np.argmax(pred, axis=1)
